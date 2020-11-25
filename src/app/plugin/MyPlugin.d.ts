@@ -10,4 +10,5 @@ declare interface Echo{
 
 export interface MyPlugin{
     echo(): Promise<Echo>
+    getContacts(filter: string): Promise<{results: any[]}>;
 }
