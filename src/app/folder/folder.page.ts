@@ -10,10 +10,16 @@ const { MyPlugin } = Plugins;
 })
 export class FolderPage implements OnInit {
   public folder: string;
+  contacts = [];
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get("id");
+  }
+
+  async loadContacts() {
+    this.contacts = (await MyPlugin.getContacts("somefilter")).results;
+    console.log("my contacts: ", this.contacts);
   }
 }
